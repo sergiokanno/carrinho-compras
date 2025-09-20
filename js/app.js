@@ -4,6 +4,13 @@ limpar();
 function adicionar() {
 //recuperar valores nome do produto, quantidade e valor
     let produto = document.getElementById('produto').value;
+
+    // Verificar se o produto selecionado é válido
+    if (!produto || produto.trim() === "") {
+        alert("Selecione um produto válido.");
+        return;
+    }
+
     let nomeProduto = produto.split('-')[0];
     let valorUnitario = produto.split('R$')[1];
     let quantidade = document.getElementById('quantidade').value;
