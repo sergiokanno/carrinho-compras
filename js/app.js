@@ -1,4 +1,5 @@
 let totalGeral;
+document.getElementById('quantidade').value = ' ';
 limpar();
 
 function adicionar() {
@@ -15,6 +16,12 @@ function adicionar() {
     let valorUnitario = produto.split('R$')[1];
     let quantidade = document.getElementById('quantidade').value;
 
+    // Verificar se a quantidade é válida
+    if (!quantidade || isNaN(quantidade) || quantidade <= 0) {
+        alert("Informe uma quantidade válida.");
+        return;
+    }
+
 //calcular o preço, o nosso subtotal
     let preco = valorUnitario * quantidade;
     let carrinho = document.getElementById('lista-produtos');
@@ -28,7 +35,7 @@ function adicionar() {
     totalGeral = totalGeral + preco;
     let campoTotal = document.getElementById('valor-total');
     campoTotal.textContent = `R$ ${totalGeral}`;
-    document.getElementById('quantidade').value = 0;
+    document.getElementById('quantidade').value = ' ';
 }
 
 function limpar() {
